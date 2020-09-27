@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+          const collectionA = [
+    {key: 'a', count: 3},
+    {key: 'e', count: 7},
+    {key: 'h', count: 11},
+    {key: 't', count: 20},
+    {key: 'f', count: 9},
+    {key: 'c', count: 8},
+    {key: 'g', count: 7},
+    {key: 'b', count: 6},
+    {key: 'd', count: 5}
+  ];
+
+  const objectB = {value: ['a', 'd', 'e', 'f']};
+
+            var objectC=objectB.value;
+            for(var i=0;i<collectionA.length;i++){
+                for(var j=0;j<objectC.length;j++){
+                    if(collectionA[i].key==objectC[j]){
+                        collectionA[i].count-=1;
+                        break;
+                    }
+                }
+            }
+            alert(collectionA);
+    </script>
+</body>
+</html>
