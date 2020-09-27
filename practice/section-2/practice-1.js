@@ -3,13 +3,20 @@
 function countSameElements(collection) {
  // 在此写代码
     var array = new Array();
-    var obj = {
-        key:'',
-        count:''
-    };
+    var k=0;
+    var count=0;
     for(var i=0;i<collection.length;i++){
-        var item = collection[i]; 
-        obj[item] = obj[item] +1; 
+       if(collection[i]==collection[i+1]){
+            count++;
+       }
+       else{
+           array[k]={
+               key:collection[i-1],
+               count:count+1
+           }
+           k++;
+           count=0;
+       }
     }
     return array;
 }

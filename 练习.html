@@ -2,35 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
+     <title>Document</title>
 </head>
 <body>
     <script>
-          const collectionA = [
-    {key: 'a', count: 3},
-    {key: 'e', count: 7},
-    {key: 'h', count: 11},
-    {key: 't', count: 20},
-    {key: 'f', count: 9},
-    {key: 'c', count: 8},
-    {key: 'g', count: 7},
-    {key: 'b', count: 6},
-    {key: 'd', count: 5}
-  ];
+        const collection = [
+    'a', 'a', 'a',
+    'e', 'e', 'e', 'e', 'e', 'e', 'e',
+    'h', 'h', 'h', 'h', 'h', 'h', 'h', 'h', 'h', 'h', 'h',
+    't', 't', 't', 't', 't', 't', 't', 't', 't', 't', 't', 't', 't', 't', 't', 't', 't', 't', 't', 't',
+    'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f',
+    'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c',
+    'g', 'g', 'g', 'g', 'g', 'g', 'g',
+    'b', 'b', 'b', 'b', 'b', 'b',
+    'd', 'd', 'd', 'd', 'd'
+  ];  
 
-  const objectB = {value: ['a', 'd', 'e', 'f']};
 
-            var objectC=objectB.value;
-            for(var i=0;i<collectionA.length;i++){
-                for(var j=0;j<objectC.length;j++){
-                    if(collectionA[i].key==objectC[j]){
-                        collectionA[i].count-=1;
-                        break;
-                    }
+
+  Error: Expected [ Object({ key: 'a', count: 3 }), 
+  Object({ key: 'e', count: 7 }), Object({ key: 'h', count: 11 }),
+   Object({ key: 't', count: 20 }), Object({ key: 'f', count: 9 }),
+    Object({ key: 'c', count: 8 }), Object({ key: 'g', count: 7 }), 
+    Object({ key: 'b', count: 6 }), Object({ key: 'd', count: '5' }) ] 
+to equal [ Object({ key: 'a', count: 3 }), 
+Object({ key: 'e', count: 7 }), Object({ key: 'h', count: 11 }),
+ Object({ key: 't', count: 20 }), Object({ key: 'f', count: 9 }),
+  Object({ key: 'c', count: 8 }), Object({ key: 'g', count: 7 }), 
+  Object({ key: 'b', count: 6 }), Object({ key: 'd', count: 5 }) ].
+
+
+
+
+
+
+
+        function countSameElements(collection) {
+        // 在此写代码
+            var array = new Array();
+            var count = 0 ,k=0;
+            for(var i=0;i<collection.length;i++){
+                for(var j=0;j<array.length;j++){
+                    var index = array.indexOf(collection[i]);
+                    //没找到，说明是第一次出现
+                        if(index == -1){
+                            count++;
+                            array[k]={
+                                key:collection[i],
+                                count:count
+                            }
+                            k++;
+                        }
+                        //找到了，
+                        else{
+                            count++;
+                            array[index]={
+                                key:collection[i],
+                                count:count
+                            }
+                        }
                 }
             }
-            alert(collectionA);
+            return array;
+        }
+        console.log(countSameElements(collection));
     </script>
 </body>
 </html>
