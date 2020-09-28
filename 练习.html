@@ -6,6 +6,16 @@
 </head>
 <body>
     <script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
         const collection = [
     'a', 'a', 'a',
     'e', 'e', 'e', 'e', 'e', 'e', 'e',
@@ -18,54 +28,54 @@
     'd', 'd', 'd', 'd', 'd'
   ];  
 
-
-
-  Error: Expected [ Object({ key: 'a', count: 3 }), 
-  Object({ key: 'e', count: 7 }), Object({ key: 'h', count: 11 }),
-   Object({ key: 't', count: 20 }), Object({ key: 'f', count: 9 }),
-    Object({ key: 'c', count: 8 }), Object({ key: 'g', count: 7 }), 
-    Object({ key: 'b', count: 6 }), Object({ key: 'd', count: '5' }) ] 
-to equal [ Object({ key: 'a', count: 3 }), 
-Object({ key: 'e', count: 7 }), Object({ key: 'h', count: 11 }),
- Object({ key: 't', count: 20 }), Object({ key: 'f', count: 9 }),
-  Object({ key: 'c', count: 8 }), Object({ key: 'g', count: 7 }), 
-  Object({ key: 'b', count: 6 }), Object({ key: 'd', count: 5 }) ].
-
-
-
-
-
-
-
-        function countSameElements(collection) {
-        // 在此写代码
-            var array = new Array();
-            var count = 0 ,k=0;
-            for(var i=0;i<collection.length;i++){
-                for(var j=0;j<array.length;j++){
-                    var index = array.indexOf(collection[i]);
-                    //没找到，说明是第一次出现
-                        if(index == -1){
-                            count++;
-                            array[k]={
-                                key:collection[i],
-                                count:count
-                            }
-                            k++;
-                        }
-                        //找到了，
-                        else{
-                            count++;
-                            array[index]={
-                                key:collection[i],
-                                count:count
-                            }
-                        }
-                }
+  function countSameElements(collection) {
+ // 在此写代码
+    var array = new Array();
+    var k=0;
+    var count=0;
+    for(var i=0;i<collection.length;i++){
+        if(collection[i].length==1){
+            if(collection[i]==collection[i+1]){
+                    count++;
             }
-            return array;
+            else{
+                array[k]={
+                    name:collection[i-1],
+                    summary:count+1
+                }
+                k++;
+                count=0;
+            }
         }
-        console.log(countSameElements(collection));
+        else{
+            var [a,x,n]=collection[i];
+            var exist = array.includes(a);
+            var index;
+            //已经存在
+            if(exist){
+                for(var j=0;j<array.length;j++){
+                    if(array[j].name==collection[i][0]){
+                        index=j;
+                        break;
+                    }
+                }
+                array[index]={
+                    summary:Number(n)+array[index].summary
+                };
+            }
+            //不存在
+            else{
+                array[k]={
+                    name:a,
+                    summary:Number(n)
+                }
+                k++;
+            }
+        }
+    }
+    return array;
+}
+        console.log(countSameElements(collection));*/
     </script>
 </body>
 </html>
