@@ -8,7 +8,7 @@ function countSameElements(collection) {
     {   
         if(collection[i].length!=1)
         {
-            let s = collection[i]
+            let s = collection[i];
             array[array.length] = collection[i];
             collection[i] = s[0];
             n++;
@@ -34,7 +34,6 @@ function countSameElements(collection) {
             t++;
         }          
     } 
-     
     for(let i = 0; i < array.length ; i++)
     {
         let c = array[i].split('-');
