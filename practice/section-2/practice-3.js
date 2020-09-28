@@ -1,55 +1,89 @@
 'use strict';
 
 function countSameElements(collection) {
- // 在此写代码
-    var array = new Array();
-    var k=0;
-    var count=0;
-    for(var i=0;i<collection.length;i++){
-        if(collection[i].length==1){
-            if(collection[i]==collection[i+1]){
-                    count++;
-            }
-            else{
-                array[k]={
-                    name:collection[i-1],
-                    summary:count+1
-                }
-                k++;
-                count=0;
-            }
+// 在此写代码
+    var str = [];
+    var n=1;
+    for(let i = 0; i < collection.length ; i++)
+    {   
+        if(collection[i].length!=1)
+        {
+            let s = collection[i]
+            str[str.length] = collection[i];
+            collection[i] = s[0];
+            n++;
         }
-        else{
-            if(collection[i]==collection[i+1]){
-                    count++;
+    }
+    var arr = [];
+    var t ;
+    t=0;
+    let j = 1;
+    for(let i = 0; i < collection.length ; i++)
+    {
+        
+        if(collection[i]==collection[i+1])
+        {
+            j++;
+            continue;
+        }
+        else
+        {
+            arr[t]={
+                name: collection[i], 
+                summary: j
             }
-            else{
-                array[k]={
-                    name:collection[i-1],
-                    summary:count+1
-                }
-                k++;
-                count=0;
+            j=1;
+            t++;
+        
+        }          
+    } 
+     
+    for(let i = 0; i < str.length ; i++)
+    {
+        let c = str[i].split('-');
+        for(let j = 0; j < arr.length; j++)
+        {
+            if(arr[j].name == c[0])
+            {
+                let w = arr[j].summary
+                arr[j].summary = parseInt(c[1])+ w - 1;
             }
         }
     }
-    var array_two = [];
-
-    for(var i=0;i<array.length;i++){
-        var index = array_two.indexOf(array[i]);
-        if(index==-1){
-            array_two[index] = {
-                name:array[i].name,
-                summary:array[i].summary
-            }
-        }
-        else{
-            array_two[index] = {
-                name:array[i].name,
-                summary:array[i].summary+array_two[index].summary
+    for(let i = 0; i < str.length ; i++)
+    {
+        let c = str[i].split(':');
+        for(let j = 0; j < arr.length; j++)
+        {
+            if(arr[j].name == c[0])
+            {
+                let w = arr[j].summary
+                arr[j].summary = parseInt(c[1])+ w - 1;
             }
         }
     }
-
-    return array_two;
+    var kuo = [];
+    for(let i = 0; i < str.length ; i++)
+    {
+        if(str[i].length>3)
+        {
+            kuo[kuo.length] = str[i];
+        }
+    }
+    for(let i = 0; i < kuo.length; i++)
+    {
+        let c = kuo[i].split('[');
+        let d = c[1].split(']');
+        for(let j = 0; j < arr.length; j++)
+        {
+            if(arr[j].name == c[0])
+            {
+                let w = arr[j].summary
+                arr[j].summary = parseInt(d[0])+ w - 1;
+            }
+            
+        }
+    }
+    console.log(arr);
+    return arr;
 }
